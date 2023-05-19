@@ -14,6 +14,7 @@ import { ApiParams } from "../../types";
 
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
+import NameFilter from "./NameFilter";
 import SortSelect from "./SortSelect";
 
 const BeerList = () => {
@@ -25,8 +26,10 @@ const BeerList = () => {
     per_page: listLimit,
   };
 
+  const [params, setParams] = useState<ApiParams>(defaultParams);
+
   // eslint-disable-next-line
-  useEffect(fetchData.bind(this, defaultParams, setBeerList), []);
+  useEffect(fetchData.bind(this, params, setBeerList), [params]);
 
   const onBeerClick = (id: string) => navigate(`/beer/${id}`);
 
@@ -38,6 +41,12 @@ const BeerList = () => {
     fetchData(params, setBeerList);
   };
 
+  const updateParams = (params: ApiParams) => {
+    setParams((curr) => {
+      return { ...curr, ...params };
+    });
+  };
+
   return (
     <article>
       <section>
@@ -47,7 +56,7 @@ const BeerList = () => {
         <Box>
           <Grid container spacing={2}>
             <Grid item xs={6}>
-              {/** TODO: Filter  */}
+              <NameFilter onFilter={updateParams} />
             </Grid>
             <Grid item xs={6}>
               <SortSelect onChange={sortByAction} />
