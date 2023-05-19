@@ -33,14 +33,6 @@ const BeerList = () => {
 
   const onBeerClick = (id: string) => navigate(`/beer/${id}`);
 
-  const sortByAction = (sortType: any) => {
-    const params: ApiParams = {
-      sort: sortType.key + ":" + sortType.order,
-      per_page: listLimit,
-    };
-    fetchData(params, setBeerList);
-  };
-
   const updateParams = (params: ApiParams) => {
     setParams((curr) => {
       return { ...curr, ...params };
@@ -59,7 +51,7 @@ const BeerList = () => {
               <NameFilter onFilter={updateParams} />
             </Grid>
             <Grid item xs={6}>
-              <SortSelect onChange={sortByAction} />
+              <SortSelect onChange={updateParams} />
             </Grid>
           </Grid>
         </Box>

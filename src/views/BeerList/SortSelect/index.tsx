@@ -3,11 +3,9 @@ import MenuItem from "@mui/material/MenuItem";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
-import { sortOption } from "../../../types";
+import { ApiParams, sortOption } from "../../../types";
 
-export default function SortSelect({
-  onChange = (sortType: sortOption) => {},
-}) {
+export default function SortSelect({ onChange = (params: ApiParams) => {} }) {
   const sortByOptions: Array<sortOption> = [
     { label: `Name ASC`, key: "name", order: "asc" },
     { label: `Name DESC`, key: "name", order: "desc" },
@@ -34,7 +32,7 @@ export default function SortSelect({
 
   // trigger parent callback after sortType assigment
   useEffect(() => {
-    onChange(sortType);
+    onChange({ sort: sortType.key + ":" + sortType.order });
   }, [sortType]);
 
   return (

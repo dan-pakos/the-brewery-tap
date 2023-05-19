@@ -1,8 +1,9 @@
 import { useState, useEffect, ChangeEvent } from "react";
 import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
+import { ApiParams } from "../../../types";
 
-export default function NameFilter({ onFilter = (params: any) => {} }) {
+export default function NameFilter({ onFilter = (params: ApiParams) => {} }) {
   const [name, setName] = useState("");
 
   // trigger parent callback after name assigment
