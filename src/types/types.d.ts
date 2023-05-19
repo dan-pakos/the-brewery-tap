@@ -1,15 +1,21 @@
 type TYPE =
-  | 'micro'
-  | 'nano'
-  | 'regional'
-  | 'brewpub'
-  | 'large'
-  | 'planning'
-  | 'bar'
-  | 'contract'
-  | 'proprietor'
-  | 'closed';
+  | "micro"
+  | "nano"
+  | "regional"
+  | "brewpub"
+  | "large"
+  | "planning"
+  | "bar"
+  | "contract"
+  | "proprietor"
+  | "closed";
 
-type SORT = 'asc' | 'desc';
+type SORT = "asc" | "desc";
 
-export type { TYPE, SORT };
+type sortOption = {
+  label: string;
+  key: string;
+  order: SORT;
+};
+
+export type { TYPE, SORT, sortOption };
