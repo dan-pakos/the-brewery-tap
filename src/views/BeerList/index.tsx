@@ -67,30 +67,43 @@ const BeerList = () => {
           </Grid>
         </Box>
         <main>
-          <List>
-            {beerList.map((beer, i) => {
-              if (i < listLimit) {
-                return (
-                  <ListItemButton
-                    key={beer.id}
-                    onClick={onBeerClick.bind(this, beer.id)}
-                  >
-                    <ListItemAvatar>
-                      <Avatar>
-                        <SportsBar />
-                      </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText
-                      primary={beer.name}
-                      secondary={beer.brewery_type}
-                    />
-                  </ListItemButton>
-                );
-              }
-            })}
-          </List>
+          {beerList.length ? (
+            <Box>
+              <List>
+                {beerList.map((beer, i) => {
+                  if (i < listLimit) {
+                    return (
+                      <ListItemButton
+                        key={beer.id}
+                        onClick={onBeerClick.bind(this, beer.id)}
+                      >
+                        <ListItemAvatar>
+                          <Avatar>
+                            <SportsBar />
+                          </Avatar>
+                        </ListItemAvatar>
+                        <ListItemText
+                          primary={beer.name}
+                          secondary={beer.brewery_type}
+                        />
+                      </ListItemButton>
+                    );
+                  }
+                })}
+              </List>
+              <Paginator onNext={loadMore} />
+            </Box>
+          ) : (
+            <Box
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              minHeight="100px"
+            >
+              <strong>No breweries found.</strong>
+            </Box>
+          )}
         </main>
-        <Paginator onNext={loadMore} />
       </section>
     </article>
   );
