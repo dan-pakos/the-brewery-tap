@@ -24,9 +24,11 @@ export default function NameFilter({ onFilter = (params: ApiParams) => {} }) {
     if (!typing) {
       typing = setTimeout(() => {
         setName(event.target.value);
-        clearInterval(typing);
         typing = null;
       }, 1000);
+    } else {
+      clearTimeout(typing);
+      typing = null;
     }
   };
 
