@@ -13,3 +13,11 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.favCheckbox {
+  cursor: pointer;
+}
+
+.favCheckbox svg {
+  color: rgb(180, 45, 100);
+}

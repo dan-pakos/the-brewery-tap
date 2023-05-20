@@ -1,6 +1,6 @@
-import { getRandomBeerList } from '../../api';
-import { Beer } from '../../types';
-import handle from '../../utils/error';
+import { getRandomBeerList } from "../../api";
+import { Beer } from "../../types";
+import handle from "../../utils/error";
 
 const fetchData = (setData: (data: Array<Beer>) => void) => {
   (async () => {
@@ -13,4 +13,27 @@ const fetchData = (setData: (data: Array<Beer>) => void) => {
   })();
 };
 
-export { fetchData };
+const getStorred = (key: string) => {
+  let data = null;
+  try {
+    const storred = localStorage.getItem(key);
+    if (storred) {
+      data = JSON.parse(storred);
+    }
+  } catch (err) {
+    console.error(err);
+  }
+
+  return data;
+};
+
+const updateStorred = (key: string, data: any) => {
+  try {
+    localStorage.removeItem(key);
+    localStorage.setItem(key, JSON.stringify(data));
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export { fetchData, getStorred, updateStorred };
