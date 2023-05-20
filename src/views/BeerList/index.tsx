@@ -91,7 +91,11 @@ const BeerList = () => {
                   }
                 })}
               </List>
-              <Paginator onNext={loadMore} />
+              {beerList.length === listLimit + 1 ? (
+                <Paginator onNext={loadMore} />
+              ) : (
+                ""
+              )}
             </Box>
           ) : (
             <Box

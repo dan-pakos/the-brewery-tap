@@ -14,7 +14,7 @@ export default function NameFilter({ onFilter = (params: ApiParams) => {} }) {
   const handleFind = (event: any) => {
     if (event.key === "Enter") {
       event.preventDefault();
-      setName(event.target.value);
+      setName(encodeURIComponent(event.target.value));
     }
   };
 
