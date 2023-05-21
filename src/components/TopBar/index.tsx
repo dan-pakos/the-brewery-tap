@@ -1,5 +1,6 @@
-import { AppBar, IconButton, Toolbar, Typography } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import { AppBar, IconButton, Toolbar } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import styles from "./TopBar.module.css";
 
 interface Props {
   drawerWidth: number;
@@ -21,16 +22,14 @@ const TopBar = (props: Props) => {
           aria-label="open drawer"
           edge="start"
           onClick={props.handleDrawerToggle}
-          sx={{ mr: 2, display: { sm: 'none' } }}
+          sx={{ mr: 2, display: { sm: "none" } }}
         >
           <MenuIcon />
         </IconButton>
-        <Typography variant="h6" noWrap component="div">
-          V
-        </Typography>
+        <img src="img/logo.png" alt="The Brewery Tap" className={styles.logo} />
       </Toolbar>
     </AppBar>
-    );
-  }
+  );
+};
 
 export default TopBar;

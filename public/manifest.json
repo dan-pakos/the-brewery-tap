@@ -1,6 +1,6 @@
 {
-  "short_name": "BW",
-  "name": "BeerWiki",
+  "short_name": "TBT",
+  "name": "The Brewery Tap",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,14 +8,9 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "src": "logo175.jpg",
+      "type": "image/jpg",
+      "sizes": "175x175"
     }
   ],
   "start_url": ".",

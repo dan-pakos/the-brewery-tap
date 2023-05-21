@@ -5,7 +5,6 @@
 .listContainer {
   padding: 20px;
   margin-bottom: 20px;
-  background: #fff;
 }
 
 .listHeader {
@@ -19,5 +18,5 @@
 }
 
 .favCheckbox svg {
-  color: rgb(180, 45, 100);
+  color: rgb(207, 61, 120);
 }

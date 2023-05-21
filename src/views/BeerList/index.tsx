@@ -7,6 +7,7 @@ import {
   ListItemAvatar,
   ListItemButton,
   ListItemText,
+  Paper,
 } from "@mui/material";
 import SportsBar from "@mui/icons-material/SportsBar";
 import { useNavigate } from "react-router-dom";
@@ -17,6 +18,7 @@ import Grid from "@mui/material/Grid";
 import NameFilter from "./NameFilter";
 import SortSelect from "./SortSelect";
 import Paginator from "./Paginator";
+import styles from "./BeerList.module.css";
 
 const BeerList = () => {
   const navigate = useNavigate();
@@ -53,60 +55,65 @@ const BeerList = () => {
   return (
     <article>
       <section>
-        <header>
-          <h1>BeerList page</h1>
-        </header>
-        <Box>
-          <Grid container spacing={2}>
-            <Grid item xs={6}>
-              <NameFilter onFilter={updateParams} />
-            </Grid>
-            <Grid item xs={6}>
-              <SortSelect onChange={updateParams} />
-            </Grid>
-          </Grid>
-        </Box>
         <main>
-          {beerList.length ? (
-            <Box>
-              <List>
-                {beerList.map((beer, i) => {
-                  if (i < listLimit) {
-                    return (
-                      <ListItemButton
-                        key={beer.id}
-                        onClick={onBeerClick.bind(this, beer.id)}
-                      >
-                        <ListItemAvatar>
-                          <Avatar>
-                            <SportsBar />
-                          </Avatar>
-                        </ListItemAvatar>
-                        <ListItemText
-                          primary={beer.name}
-                          secondary={beer.brewery_type}
-                        />
-                      </ListItemButton>
-                    );
-                  }
-                })}
-              </List>
-              {beerList.length === listLimit + 1 ? (
-                <Paginator onNext={loadMore} />
+          <Paper>
+            <div className={styles.mainList}>
+              <header>
+                <h1>BeerList page</h1>
+              </header>
+              <Box>
+                <Grid container spacing={2}>
+                  <Grid item xs={6}>
+                    <NameFilter onFilter={updateParams} />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <SortSelect onChange={updateParams} />
+                  </Grid>
+                </Grid>
+              </Box>
+
+              {beerList.length ? (
+                <Box>
+                  <List>
+                    {beerList.map((beer, i) => {
+                      if (i < listLimit) {
+                        return (
+                          <ListItemButton
+                            key={beer.id}
+                            onClick={onBeerClick.bind(this, beer.id)}
+                          >
+                            <ListItemAvatar>
+                              <Avatar>
+                                <SportsBar />
+                              </Avatar>
+                            </ListItemAvatar>
+                            <ListItemText
+                              primary={beer.name}
+                              secondary={beer.brewery_type}
+                            />
+                          </ListItemButton>
+                        );
+                      }
+                    })}
+                  </List>
+                  {beerList.length === listLimit + 1 ? (
+                    <Paginator onNext={loadMore} />
+                  ) : (
+                    ""
+                  )}
+                </Box>
               ) : (
-                ""
+                <Box
+                  display="flex"
+                  justifyContent="center"
+                  alignItems="center"
+                  minHeight="100px"
+                >
+                  <strong>No breweries found.</strong>
+                </Box>
               )}
-            </Box>
-          ) : (
-            <Box
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-              minHeight="100px"
-            >
-              <strong>No breweries found.</strong>
-            </Box>
-          )}
+            </div>
+          </Paper>
         </main>
       </section>
     </article>

@@ -1,20 +1,35 @@
-import { createTheme } from '@mui/material/styles';
-import { green, blue } from '@mui/material/colors';
+import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
   palette: {
+    mode: "dark",
     primary: {
-      main: blue[800],
+      main: "#f3bd67",
     },
     secondary: {
-      main: green[500],
+      main: "#8d6e63",
+    },
+    background: {
+      default: "#0b1723",
+      paper: "#0b1723",
+    },
+    divider: "#383a3c",
+    text: {
+      primary: "#dedede",
     },
   },
   components: {
     MuiLink: {
       styleOverrides: {
         root: {
-          textDecoration: 'none',
+          textDecoration: "none",
+        },
+      },
+    },
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          background: "#0b1723",
         },
       },
     },

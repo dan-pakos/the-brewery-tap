@@ -49,7 +49,9 @@ const Home = () => {
             <div className={styles.listContainer}>
               <div className={styles.listHeader}>
                 <TextField label="Filter..." variant="outlined" />
-                <Button variant="contained">Reload list</Button>
+                <Button variant="contained" disabled>
+                  Reload list
+                </Button>
               </div>
               <ul className={styles.list}>
                 {beerList.map((beer, index) => (
