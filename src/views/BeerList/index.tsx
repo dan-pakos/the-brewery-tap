@@ -56,63 +56,61 @@ const BeerList = () => {
     <article>
       <section>
         <main>
-          <Paper>
-            <div className={styles.mainList}>
-              <header>
-                <h1>BeerList page</h1>
-              </header>
-              <Box>
-                <Grid container spacing={2}>
-                  <Grid item xs={6}>
-                    <NameFilter onFilter={updateParams} />
-                  </Grid>
-                  <Grid item xs={6}>
-                    <SortSelect onChange={updateParams} />
-                  </Grid>
+          <Paper className="mainPaper">
+            <header>
+              <h1>BeerList page</h1>
+            </header>
+            <Box>
+              <Grid container spacing={2}>
+                <Grid item xs={6}>
+                  <NameFilter onFilter={updateParams} />
                 </Grid>
-              </Box>
+                <Grid item xs={6}>
+                  <SortSelect onChange={updateParams} />
+                </Grid>
+              </Grid>
+            </Box>
 
-              {beerList.length ? (
-                <Box>
-                  <List>
-                    {beerList.map((beer, i) => {
-                      if (i < listLimit) {
-                        return (
-                          <ListItemButton
-                            key={beer.id}
-                            onClick={onBeerClick.bind(this, beer.id)}
-                          >
-                            <ListItemAvatar>
-                              <Avatar>
-                                <SportsBar />
-                              </Avatar>
-                            </ListItemAvatar>
-                            <ListItemText
-                              primary={beer.name}
-                              secondary={beer.brewery_type}
-                            />
-                          </ListItemButton>
-                        );
-                      }
-                    })}
-                  </List>
-                  {beerList.length === listLimit + 1 ? (
-                    <Paginator onNext={loadMore} />
-                  ) : (
-                    ""
-                  )}
-                </Box>
-              ) : (
-                <Box
-                  display="flex"
-                  justifyContent="center"
-                  alignItems="center"
-                  minHeight="100px"
-                >
-                  <strong>No breweries found.</strong>
-                </Box>
-              )}
-            </div>
+            {beerList.length ? (
+              <Box>
+                <List>
+                  {beerList.map((beer, i) => {
+                    if (i < listLimit) {
+                      return (
+                        <ListItemButton
+                          key={beer.id}
+                          onClick={onBeerClick.bind(this, beer.id)}
+                        >
+                          <ListItemAvatar>
+                            <Avatar>
+                              <SportsBar />
+                            </Avatar>
+                          </ListItemAvatar>
+                          <ListItemText
+                            primary={beer.name}
+                            secondary={beer.brewery_type}
+                          />
+                        </ListItemButton>
+                      );
+                    }
+                  })}
+                </List>
+                {beerList.length === listLimit + 1 ? (
+                  <Paginator onNext={loadMore} />
+                ) : (
+                  ""
+                )}
+              </Box>
+            ) : (
+              <Box
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+                minHeight="100px"
+              >
+                <strong>No breweries found.</strong>
+              </Box>
+            )}
           </Paper>
         </main>
       </section>

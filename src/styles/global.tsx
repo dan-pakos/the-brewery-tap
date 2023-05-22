@@ -5,6 +5,7 @@ export default function GlobalThemeStyles() {
     <GlobalStyles
       styles={{
         body: { backgroundColor: "#000810", color: "#dedede" },
+        ".mainPaper": { padding: "20px", marginBottom: "20px" },
       }}
     />
   );
